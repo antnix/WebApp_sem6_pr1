@@ -1,0 +1,29 @@
+﻿body {
+    font-family:'Times New Roman', Times, serif;
+    text-align:justify;
+    font-size:medium;
+}
+div.Page {
+    width: 1000px;
+    height: 700px;
+    border: double;
+    margin: auto;
+}
+div.Head {
+    width: 980px;
+    height: 150px;
+    border: double;
+    margin: 5px auto;
+}
+div.LeftColumn {
+    width: 200px;
+    height: 500px;
+    border: double;
+    float: left;
+}
+div.Context{
+    width:750px;
+    height:500px;
+    border:double;
+    float:right;
+}
