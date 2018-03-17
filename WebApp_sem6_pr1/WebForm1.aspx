@@ -2,18 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <p>
-    strona 1<br />
-</p>
-<p>
-</p>
 <p>
     <asp:Calendar ID="Calendar1" runat="server"></asp:Calendar>
-</p>
-<p>
-</p>
-<p>
-</p>
-<p>
 </p>
 </asp:Content>

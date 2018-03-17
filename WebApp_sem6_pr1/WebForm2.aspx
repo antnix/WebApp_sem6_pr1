@@ -10,10 +10,8 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <p>
-    strona 2</p>
 <p>
-    <asp:GridView ID="GridView1" runat="server" Width="457px" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="SqlDataSource2" AllowPaging="True" BackColor="White" BorderColor="#336666" BorderStyle="Double" BorderWidth="3px" CellPadding="4" GridLines="Horizontal">
+    <asp:GridView ID="gwMainTable" runat="server" Width="457px" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="SqlDataSource2" AllowPaging="True" BackColor="White" BorderColor="#336666" BorderStyle="Double" BorderWidth="3px" CellPadding="4" GridLines="Horizontal">
         <Columns>
             <asp:CommandField ShowSelectButton="True" />
             <asp:BoundField DataField="Id" HeaderText="Id" InsertVisible="False" ReadOnly="True" SortExpression="Id" />
@@ -35,22 +33,40 @@
     <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT Student.Id, Student.Name, Student.Surname, Student.Nr_albomu, Phones.Number FROM Phones RIGHT OUTER JOIN Student ON Phones.Id_person = Student.Id"></asp:SqlDataSource>
     <table class="auto-style1">
         <tr>
+            <td> <h3>Add new data:</h3></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
             <td>
-    <asp:TextBox ID="TextBox1" runat="server">Imie</asp:TextBox>
-    <asp:TextBox ID="TextBox3" runat="server" CssClass="auto-style2">Nazwisko</asp:TextBox>
-    <asp:TextBox ID="TextBox2" runat="server" OnTextChanged="TextBox2_TextChanged">Numer</asp:TextBox>
+             <asp:TextBox ID="tbName1" runat="server" placeholder="Imie"></asp:TextBox>
+            </td>
+            <td>
+            <asp:TextBox ID="tbName2" runat="server" placeholder="Nazwisko" CssClass="auto-style2"></asp:TextBox>
+            </td>
+            <td>
+            <asp:TextBox ID="tbId" runat="server" placeholder="Nr indeksu"></asp:TextBox>
             </td>
             <td>&nbsp;</td>
         </tr>
         <tr>
             <td>
-                <asp:TextBox ID="TextBox4" runat="server" Enabled="False">number1</asp:TextBox>
-                <asp:CheckBox ID="CheckBox1" runat="server" AutoPostBack="True" OnCheckedChanged="CheckBox1_CheckedChanged" Text="nr 1" />
-                <asp:TextBox ID="TextBox5" runat="server" Enabled="False">number2</asp:TextBox>
-                <asp:CheckBox ID="CheckBox2" runat="server" AutoPostBack="True" OnCheckedChanged="CheckBox2_CheckedChanged" Text="nr 2" />
+                <asp:TextBox ID="tbPhoneNumber1" runat="server" placeholder="Telefon" Enabled="False"></asp:TextBox>
             </td>
             <td>
-    <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" Text="Add" Width="160px" />
+                <asp:CheckBox ID="cbPhoneNumber1" runat="server" AutoPostBack="True" OnCheckedChanged="CheckBox1_CheckedChanged" Text="Telefon 1" />
+            </td>
+            <td>
+                <asp:TextBox ID="tbPhoneNumber2" runat="server" placeholder="Telefon" Enabled="False"></asp:TextBox>
+            </td>
+            <td>
+                <asp:CheckBox ID="cbPhoneNumber2" runat="server" AutoPostBack="True" OnCheckedChanged="CheckBox2_CheckedChanged" Text="Telefon 2" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" Text="Add" Width="160px" />
             </td>
         </tr>
     </table>

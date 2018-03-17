@@ -11,50 +11,42 @@ namespace WebApp_sem6_pr1
 {
     public partial class WebForm2 : System.Web.UI.Page
     {
-        protected void Page_Load(object sender, EventArgs e)
-        {
-           
-        }
 
         protected void btnAdd_Click(object sender, EventArgs e)
         {
             using (DbContext dbContext = new DbContext("ConnectionString"))
             {
-                if(CheckBox1.Checked == true && CheckBox2.Checked == false)
-                dbContext.Database.ExecuteSqlCommand("INSERT INTO Student VALUES ('" + TextBox1.Text + "', '" + TextBox3.Text + "', " + TextBox2.Text + ");" +
-                    " INSERT INTO Phones VALUES('" + TextBox4.Text + "', SCOPE_IDENTITY())");
-                else if(CheckBox1.Checked == true && CheckBox2.Checked == true)
-                    dbContext.Database.ExecuteSqlCommand("INSERT INTO Student VALUES ('" + TextBox1.Text + "', '" + TextBox3.Text + "', " + TextBox2.Text + ");" +
-                    " INSERT INTO Phones VALUES('" + TextBox4.Text + "', SCOPE_IDENTITY()), ('" + TextBox5.Text + "', SCOPE_IDENTITY())" );
-                else if (CheckBox1.Checked == false && CheckBox2.Checked == true)
-                    dbContext.Database.ExecuteSqlCommand("INSERT INTO Student VALUES ('" + TextBox1.Text + "', '" + TextBox3.Text + "', " + TextBox2.Text + ");" +
-                    " INSERT INTO Phones VALUES('" + TextBox5.Text + "', SCOPE_IDENTITY())");
+                //hkghk,
+                if(cbPhoneNumber1.Checked == true && cbPhoneNumber2.Checked == false)
+                dbContext.Database.ExecuteSqlCommand("INSERT INTO Student VALUES ('" + tbName1.Text + "', '" + tbName2.Text + "', " + tbId.Text + ");" +
+                    " INSERT INTO Phones VALUES('" + tbPhoneNumber1.Text + "', SCOPE_IDENTITY())");
+                else if(cbPhoneNumber1.Checked == true && cbPhoneNumber2.Checked == true)
+                    dbContext.Database.ExecuteSqlCommand("INSERT INTO Student VALUES ('" + tbName1.Text + "', '" + tbName2.Text + "', " + tbId.Text + ");" +
+                    " INSERT INTO Phones VALUES('" + tbPhoneNumber1.Text + "', SCOPE_IDENTITY()), ('" + tbPhoneNumber2.Text + "', SCOPE_IDENTITY())" );
+                else if (cbPhoneNumber1.Checked == false && cbPhoneNumber2.Checked == true)
+                    dbContext.Database.ExecuteSqlCommand("INSERT INTO Student VALUES ('" + tbName1.Text + "', '" + tbName2.Text + "', " + tbId.Text + ");" +
+                    " INSERT INTO Phones VALUES('" + tbPhoneNumber2.Text + "', SCOPE_IDENTITY())");
                 else
-                    dbContext.Database.ExecuteSqlCommand("INSERT INTO Student VALUES ('" + TextBox1.Text + "', '" + TextBox3.Text + "', " + TextBox2.Text + ");");
+                    dbContext.Database.ExecuteSqlCommand("INSERT INTO Student VALUES ('" + tbName1.Text + "', '" + tbName2.Text + "', " + tbId.Text + ");");
                 dbContext.SaveChanges();
             }
-            GridView1.DataBind();
+            gwMainTable.DataBind();
         }
-
-        protected void TextBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        
         protected void CheckBox1_CheckedChanged(object sender, EventArgs e)
         {
-            if (CheckBox1.Checked)
-               TextBox4.Enabled = true;
+            if (cbPhoneNumber1.Checked)
+               tbPhoneNumber1.Enabled = true;
             else
-               TextBox4.Enabled = false;
+               tbPhoneNumber1.Enabled = false;
         }
 
         protected void CheckBox2_CheckedChanged(object sender, EventArgs e)
         {
-            if (CheckBox2.Checked)
-                TextBox5.Enabled = true;
+            if (cbPhoneNumber2.Checked)
+                tbPhoneNumber2.Enabled = true;
             else
-                TextBox5.Enabled = false;
+                tbPhoneNumber2.Enabled = false;
         }
     }
 }
