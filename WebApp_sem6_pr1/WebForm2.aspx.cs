@@ -16,8 +16,15 @@ namespace WebApp_sem6_pr1
         {
             using (DbContext dbContext = new DbContext("ConnectionString"))
             {
-                //hkghk,
-                if(cbPhoneNumber1.Checked == true && cbPhoneNumber2.Checked == false)
+                var name = tbName1.Text;
+                var lastName = tbName2.Text;
+                var phoneNumber1 = tbPhoneNumber1.Text;
+                var phoneNumber2 = tbPhoneNumber2.Text;
+                int.TryParse(tbId.Text, out int id);
+
+                dbContext.Database.ExecuteSqlCommand($"INSERT INTO Student VALUES ('{name}', '{lastName}', {id});");
+
+                if (cbPhoneNumber1.Checked == true && cbPhoneNumber2.Checked == false)
                 dbContext.Database.ExecuteSqlCommand("INSERT INTO Student VALUES ('" + tbName1.Text + "', '" + tbName2.Text + "', " + tbId.Text + ");" +
                     " INSERT INTO Phones VALUES('" + tbPhoneNumber1.Text + "', SCOPE_IDENTITY())");
                 else if(cbPhoneNumber1.Checked == true && cbPhoneNumber2.Checked == true)
